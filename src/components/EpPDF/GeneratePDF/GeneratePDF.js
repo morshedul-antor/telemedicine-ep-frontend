@@ -179,6 +179,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                             {v.doses} {v.before_after !== '' ? '.....' : null} {v.before_after}{' '}
                                             {v.days !== 0 ? '.....' : null} {v.days} {v.days !== null ? 'days' : null}
                                         </p>
+                                        <p>{v.remarks}</p>
                                     </div>
                                 ))}
                             </Fragment>
