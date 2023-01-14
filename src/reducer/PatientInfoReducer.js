@@ -3,7 +3,7 @@ import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorag
 //Set state as default storage value
 export const patientState = EpDefStorage('patient', {
     patient: {
-        id: 0,
+        id: 3681,
         cause_of_consultation: '',
         name: '',
         phone: '',
@@ -22,7 +22,7 @@ export const patientReducer = (state, action) => {
         case 'remove':
             EpSetStorage('patient', {
                 patient: {
-                    id: 0,
+                    id: 3681,
                     cause_of_consultation: '',
                     name: '',
                     phone: '',

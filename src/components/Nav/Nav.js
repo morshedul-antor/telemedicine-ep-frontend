@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { SidebarContext, PatientInfo } from '../../allContext'
 import epLogo from '../../assets/img/logo.png'
 import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
+import { consultationReducer, consultationState } from '../../reducer/causeOfConsultation'
 import { dob } from '../../utils/DateOfBirth'
 import Patient from '../Patient/Patient'
 import classes from './Nav.module.css'
@@ -15,16 +16,9 @@ const Nav = () => {
     const { state, dispatch } = useContext(SidebarContext)
     let h = state.expand ? 'hide' : 'unhide'
 
+    const [stateConsultation] = useReducer(consultationReducer, consultationState)
     const [statePatient, dispatchPatient] = useReducer(patientReducer, patientState)
     const [modal, setModal] = useState(false)
-
-    let y = ''
-    let m = ''
-    if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
-        let [year, month] = dob(statePatient.patient.dob)
-        y = year
-        m = month
-    }
 
     return (
         <div className={classes.Nav}>
@@ -45,27 +39,45 @@ const Nav = () => {
                         }`}
                         onClick={(e) => setModal(!modal)}>
                         {statePatient.patient.name && statePatient.patient.name.length !== 0 ? (
-                            <div>
-                                <FontAwesomeIcon icon={faUserCircle} />
-                                <p>
-                                    {statePatient.patient.name} ({statePatient.patient.sex})
-                                    <span>{statePatient.patient.phone}</span>
+                            <>
+                                <div>
+                                    <FontAwesomeIcon icon={faUserCircle} />
+                                    <p>
+                                        {statePatient.patient.name} ({statePatient.patient.sex})
+                                        <span>{statePatient.patient.phone}</span>
+                                    </p>
+                                    <p>
+                                        <span>
+                                            Age:
+                                            <b>
+                                                {`  ${
+                                                    statePatient.patient.year !== 0
+                                                        ? statePatient.patient.year || ''
+                                                        : '0'
+                                                } year's, ${
+                                                    statePatient.patient.month !== 0
+                                                        ? statePatient.patient.month || ''
+                                                        : '0'
+                                                } month's`}
+                                            </b>
+                                        </span>
+                                        <span>
+                                            Blood Group: <b>{statePatient.patient.blood_group}</b>
+                                        </span>
+                                    </p>
+                                </div>
+                                <p className={classes.address}>
+                                    Current Address: <span>{statePatient.patient.address}</span>
                                 </p>
-                                <p>
-                                    <span>
-                                        Age:
-                                        {statePatient.patient.dob && statePatient.patient.dob.length === 0
-                                            ? '--'
-                                            : ` ${y} years ${m} months`}
-                                    </span>
-                                    <span>Address: {statePatient.patient.division}</span>
-                                </p>
-                            </div>
+                            </>
                         ) : (
                             ''
                             // <FontAwesomeIcon icon={faUserPlus} />
                         )}
                     </div>
+                </div>
+                <div className={classes.cause}>
+                    Cause of Consultation: <span> {stateConsultation.consultation}</span>
                 </div>
 
                 {modal ? <Patient cross={setModal} /> : null}

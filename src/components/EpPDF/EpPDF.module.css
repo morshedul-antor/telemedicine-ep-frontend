@@ -13,7 +13,8 @@
     box-shadow: 0 2px 20px var(--grey);
     padding: 4px 0;
 }
-.btnGroup > a, .btnGroup > button{
+.btnGroup > a,
+.btnGroup > button {
     color: var(--primary);
     text-decoration: none;
     font-size: 14px;
@@ -24,9 +25,10 @@
     cursor: pointer;
     border-right: 1px solid var(--light-grey);
 }
-.btnGroup button:last-child{
+.btnGroup button:last-child {
     border-right: none;
 }
-.btnGroup > a:hover, .btnGroup > button:hover{
+.btnGroup > a:hover,
+.btnGroup > button:hover {
     color: var(--secondary);
 }

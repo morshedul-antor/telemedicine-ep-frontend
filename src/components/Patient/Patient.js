@@ -16,12 +16,14 @@ const Patient = ({ cross }) => {
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
     const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
+    const [group, setGroup] = useState(statePatient.patient.blood_group || 'not selected')
 
-    const [year, setYear] = useState(statePatient.patient.dob || '')
-    const [month, setMonth] = useState(statePatient.patient.dob || '')
-    const [address, setAddress] = useState(statePatient.patient.division || '')
+    const [year, setYear] = useState(statePatient.patient.year === 0 ? 0 : statePatient.patient.year || '')
+    const [month, setMonth] = useState(statePatient.patient.month === 0 ? 0 : statePatient.patient.month || '')
+    const [address, setAddress] = useState(statePatient.patient.address || '')
 
     const [searchResult, setSearchResult] = useState([])
+    const [hide, setHide] = useState(false)
 
     const apiV1 = process.env.REACT_APP_API_V1
     const token = stateAuth.token
@@ -32,7 +34,9 @@ const Patient = ({ cross }) => {
                 setSearchResult(data)
 
                 setPhone(statePatient.patient.phone)
-                setAddress(statePatient.patient.division)
+                setSex(statePatient.patient.sex)
+                setAddress(statePatient.patient.address)
+                setGroup(statePatient.patient.blood_group)
                 if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
                     const [y, m, d] = dob(statePatient.patient.dob)
                     setYear(y)
@@ -42,10 +46,51 @@ const Patient = ({ cross }) => {
             .catch((e) => {})
     }, [name, token, apiV1, statePatient.patient.dob, statePatient])
 
+    const patientSet = (e) => {
+        const patientInfo = {
+            id: statePatient.patient.id,
+            name: name,
+            phone: phone,
+            sex: sex,
+            blood_group: group,
+            month: month,
+            year: year,
+            address: address,
+        }
+
+        localStorage.setItem('patient', JSON.stringify({ patient: patientInfo }))
+        window.location.reload()
+    }
+
+    const clearPatient = () => {
+        dispatchPatient({ type: 'remove' })
+        dispatchConsultation({ type: 'remove' })
+        setName('')
+        setPhone('')
+        setSex('not selected')
+        setYear('')
+        setMonth('')
+        setAddress('')
+        setGroup('not selected')
+        window.location.reload()
+    }
+
+    useEffect(() => {
+        if (name.length > 0) {
+            setHide(true)
+        } else {
+            setHide(false)
+        }
+    }, [name])
+
     return (
         <div className={classes.Patient}>
-            <form>
-                <span onClick={(e) => cross(false)}>x</span>
+            <form
+                onSubmit={(e) => {
+                    patientSet(e)
+                    cross(false)
+                }}>
+                <span onClick={() => cross(false)}>x</span>
                 <h2>Patient Information</h2>
 
                 <div className={classes.Wrapper}>
@@ -53,27 +98,35 @@ const Patient = ({ cross }) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         type="text"
-                        placeholder="Patient name"
+                        placeholder="Patient name*"
+                        required
                     />
                     {/* Patient search modal */}
                     {(name.length !== 0) & (statePatient.patient.name !== name) ? (
                         <PatientSearch arr={searchResult} setPatient={dispatchPatient} setName={setName} />
                     ) : null}
 
+                    {hide && (
+                        <span className={classes.clear} onClick={() => clearPatient()}>
+                            clear
+                        </span>
+                    )}
+
                     <input
                         type="text"
                         value={stateConsultation.consultation}
                         onChange={(e) => dispatchConsultation({ type: 'input', payload: e.target.value })}
-                        placeholder="Cause of consultation"
+                        placeholder="Cause of consultation*"
+                        required
                     />
 
+                    <input
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        type="text"
+                        placeholder="Phone number"
+                    />
                     <div className={classes.Two}>
-                        <input
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            type="text"
-                            placeholder="Phone number"
-                        />
                         <select value={sex} onChange={(e) => setSex(e.target.value)}>
                             <option value="not selected" disabled>
                                 Sex
@@ -81,11 +134,26 @@ const Patient = ({ cross }) => {
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
+
+                        <select value={group} onChange={(e) => setGroup(e.target.value)}>
+                            <option value="not selected" disabled>
+                                Blood Group
+                            </option>
+                            <option value="A+">A+</option>
+                            <option value="AB+">AB+</option>
+                            <option value="B+">B+</option>
+                            <option value="O+">O+</option>
+                            <option value="A-">A-</option>
+                            <option value="AB-">AB-</option>
+                            <option value="B-">B-</option>
+                            <option value="O-">O-</option>
+                        </select>
                     </div>
+
                     <div className={classes.Two}>
                         <input
                             type="number"
-                            placeholder="Years"
+                            placeholder="Year's"
                             min={0}
                             value={year}
                             onChange={(e) => setYear(parseInt(e.target.value))}
@@ -93,7 +161,7 @@ const Patient = ({ cross }) => {
 
                         <input
                             type="number"
-                            placeholder="Months"
+                            placeholder="Month's"
                             min={0}
                             value={month}
                             onChange={(e) => setMonth(parseInt(e.target.value))}
@@ -106,7 +174,7 @@ const Patient = ({ cross }) => {
                         type="text"
                         placeholder="Address"
                     />
-                    <button onClick={(e) => cross(false)}>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         </div>

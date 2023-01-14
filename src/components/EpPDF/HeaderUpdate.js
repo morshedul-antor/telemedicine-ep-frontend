@@ -40,11 +40,14 @@ const HeaderUpdate = ({ setter }) => {
     return (
         <div className={classes.wrapper}>
             <div className={classes.box}>
+                <div className={classes.close} onClick={() => setter(false)}>
+                    &times;
+                </div>
                 <h2>Header Update</h2>
                 <div className={classes.formWrapper}>
                     <select name="" id="" value={side} onChange={(e) => setSide(e.target.value)}>
-                        <option value="left">Left side</option>
-                        <option value="right">Right side</option>
+                        <option value="left">Left Side</option>
+                        <option value="right">Right Side</option>
                     </select>
                     <input type="text" value={heading} onChange={(e) => setHeading(e.target.value)} />
                     <textarea

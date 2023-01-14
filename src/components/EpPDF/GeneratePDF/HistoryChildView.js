@@ -3,7 +3,7 @@ const HistoryChildView = ({ data, title }) => {
         <div>
             {data.length !== 0 ? (
                 <p>
-                    {title} :
+                    {title}:{' '}
                     {data.map((v, i, array) => (
                         <b key={i}>
                             {v.history}

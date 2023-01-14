@@ -10,7 +10,7 @@
 }
 .alignLeft svg {
     color: var(--light-grey);
-    margin: 10px 0;
+    margin: 12px 0;
     font-size: 28px;
     cursor: pointer;
 }
@@ -24,6 +24,10 @@
     position: relative;
     cursor: pointer;
     width: 80%;
+}
+
+.patient:hover {
+    opacity: 0.8;
 }
 
 .patient svg {
@@ -52,36 +56,72 @@
 }
 
 .ok > div {
+    margin-left: -1em;
     color: var(--primary);
     position: relative;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 50%));
 }
-.ok > div > svg{
+.ok > div > svg {
     position: absolute;
-    top: -10px;
+    top: 18px;
 }
 .ok > div > p {
-    margin: 0;
-    display: inline;
+    margin: 0px;
+    display: block;
     position: relative;
     font-weight: 500;
-    top: -15px;
+    top: 15px;
     left: 40px;
     font-size: 14px;
     color: var(--primary);
     border-radius: 2px;
 }
-.ok > div > p > span{
+.ok > div > p > span {
     color: var(--grey);
     display: block;
     font-size: 12px;
     /* margin-bottom: 5px; */
 }
-.ok p > span{
+
+.ok > div > p > span > b {
+    padding-left: 2px;
+}
+
+.ok p > span {
     margin-bottom: 2px;
 }
+
+.address {
+    margin: 20px 0 6px 5px;
+    color: var(--grey);
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    max-width: 390px;
+}
+
+.address > span {
+    font-weight: 500;
+    padding-left: 2px;
+    font-size: 11px;
+}
+
+.cause {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.cause > span {
+    font-size: 13px;
+    padding-left: 6px;
+    color: var(--red);
+}
+
 @keyframes pop {
     0% {
         transform: scale(1);

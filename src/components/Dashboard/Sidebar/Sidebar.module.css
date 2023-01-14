@@ -64,21 +64,34 @@
 .nav li {
     font-size: 12px;
     font-weight: 500;
-    padding: 5px 0 5px 80px;
+    padding: 8px 0 6px 80px;
     color: var(--dark-blue);
     transition: 100ms;
     position: relative;
 }
 .nav li svg {
     position: absolute;
-    top: 7px;
+    top: 10px;
     left: 50px;
     font-size: 12px;
 }
-.nav li:hover,
+
 .active {
-    background-color: var(--light-grey);
+    /* background-color: var(--light-grey); */
+    background-image: linear-gradient(to right, var(--primary) 0%, var(--white) 150%);
+    color: var(--white) !important;
     cursor: pointer;
     transform: scale(1.1);
-    color: var(--primary) !important;
+    /* color: var(--primary) !important; */
+}
+
+.active:hover {
+    opacity: 0.9;
+}
+
+.nav li:hover {
+    background-color: var(--light-low);
+    color: var(--primary);
+    cursor: pointer;
+    transform: scale(1.1);
 }

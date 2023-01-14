@@ -150,7 +150,16 @@ const SubmitEP = () => {
             body: JSON.stringify({
                 cause_of_consultation: stateConsultation.consultation,
                 doctor_id: stateUser.info.id,
+
                 patient_id: statePatient.patient.id,
+                patient_name: statePatient.patient.name,
+                patient_phone: statePatient.patient.phone,
+                patient_sex: statePatient.patient.sex,
+                age_years: statePatient.patient.year,
+                age_months: statePatient.patient.month,
+                blood_group: statePatient.patient.blood_group,
+                current_address: statePatient.patient.address,
+
                 chief_complaints: [...ccList],
                 histories: [...history],
                 co_morbidities: comorbidity,
@@ -180,12 +189,14 @@ const SubmitEP = () => {
     if (epCreated.status === true) {
         // alert('Prescription created.')
     }
+
+    console.log('sex', statePatient.patient.sex)
     return (
         <div className={classes.SubmitEP}>
             <button onClick={(e) => submit(e)}>Create Prescription</button>
             {epCreated.status === true ? (
                 <button className={classes.viewBtn}>
-                    <a href={`/ep/hxep${epCreated.data.id}`}>View Prescription</a>
+                    <a href={`/ep/hxep${epCreated.data.id + 100000}`}>View Prescription</a>
                 </button>
             ) : null}
         </div>

@@ -62,7 +62,9 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    opacity: 0.95;
 }
+
 .btn button {
     display: block;
     font-size: 11px;
@@ -71,9 +73,17 @@
     margin-top: 5px;
     cursor: pointer;
     border: 1px solid var(--primary);
-    color: var(--primary);
-}
-.btn button:nth-child(2) {
-    background: var(--primary);
     color: var(--white);
+    background-color: var(--secondary);
+    border-radius: 2px;
+}
+.btn button:nth-child(1) {
+    background: var(--red);
+    color: var(--white);
+}
+
+.btn button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 200ms;
 }

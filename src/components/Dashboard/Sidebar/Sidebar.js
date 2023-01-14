@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useEffect, useState } from 'react'
 import { FieldContext, UserInfo } from '../../../allContext'
-import docImg from '../../../assets/img/docstock.jpg'
+import docImg from '../../../assets/img/doctor.png'
 import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'
 import SubmitEP from './SubmitEP/SubmitEP'
@@ -22,6 +22,7 @@ const Sidebar = () => {
     const { stateUser } = useContext(UserInfo)
 
     const [details, setDetails] = useState({})
+    const [picture, setPicture] = useState({})
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -47,13 +48,44 @@ const Sidebar = () => {
         } catch (e) {}
     }, [apiV1, stateUser])
 
+    useEffect(() => {
+        const fetchData = async () => {
+            let response = await fetch(`${apiV1}/profile-pic/${stateUser.info.id}`, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+            let data = await response.json()
+
+            if (response.ok) {
+                setPicture(data.image_string)
+            } else {
+                setPicture({ image_string: null })
+            }
+        }
+
+        try {
+            fetchData()
+        } catch {
+            fetchData({ image_string: null })
+        }
+    }, [apiV1, stateUser])
+
+    const profile = `${apiV1}/images/profile/${picture}`
+
     return (
         <div className={classes.Sidebar}>
             <div className={classes.epLogo}>
                 <img src={epLogo} alt="" width="200px" />
             </div>
             <div className={classes.doc}>
-                <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
+                <div
+                    className={classes.docImg}
+                    style={{
+                        backgroundImage: `url(${picture.image_string !== null ? profile : docImg})`,
+                    }}></div>
                 <h3>{stateUser.info.name}</h3>
                 <p>{details?.specialities && details?.specialities[0].speciality}</p>
                 <hr />
@@ -112,7 +144,7 @@ const Sidebar = () => {
                     onClick={() => dispatch({ type: 'refer' })}
                     className={state.field === 'refer' ? classes.active : null}>
                     <FontAwesomeIcon icon={faUserCircle} />
-                    Reffer
+                    Refer
                 </li>
             </ul>
             <SubmitEP />
