@@ -1,9 +1,11 @@
 import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
 
+const demoId = parseInt(process.env.REACT_APP_DEMO_ID)
+console.log('s', demoId)
 //Set state as default storage value
 export const patientState = EpDefStorage('patient', {
     patient: {
-        id: 3681,
+        id: demoId,
         cause_of_consultation: '',
         name: '',
         phone: '',
@@ -22,7 +24,7 @@ export const patientReducer = (state, action) => {
         case 'remove':
             EpSetStorage('patient', {
                 patient: {
-                    id: 3681,
+                    id: demoId,
                     cause_of_consultation: '',
                     name: '',
                     phone: '',
