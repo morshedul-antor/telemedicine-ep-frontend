@@ -1,25 +1,18 @@
-import React, { Fragment, useContext, useState, useEffect, useReducer } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { PdfWrapped } from '../../../allContext'
-import { Auth, UserInfo } from '../../../allContext'
-import { getFromAPI, getWithAuthToken } from '../../../api/get'
-import { userReducer, userState } from '../../../reducer/userReducer'
+import { Auth } from '../../../allContext'
+import { getFromAPI } from '../../../api/get'
 import classes from './Generate.module.css'
 import Header from './Header/Header'
 import HistoryChildView from './HistoryChildView'
-// import HistoryChildView from './HistoryChildView'
 import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
     const { hxepid } = useParams()
     const [ep, setEp] = useState({})
     const [profile, setProfile] = useState('')
-    // const [headerData, setHeaderData] = useState([])
 
     const { stateAuth } = useContext(Auth)
-    // const [stateUser] = useReducer(userReducer, userState)
-    // const userDetail = stateUser.info
-
     const apiV1 = process.env.REACT_APP_API_V1
 
     useEffect(() => {
