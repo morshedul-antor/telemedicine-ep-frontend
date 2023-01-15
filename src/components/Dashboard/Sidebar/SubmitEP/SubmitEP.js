@@ -190,7 +190,6 @@ const SubmitEP = () => {
         // alert('Prescription created.')
     }
 
-    console.log('sex', statePatient.patient.sex)
     return (
         <div className={classes.SubmitEP}>
             <button onClick={(e) => submit(e)}>Create Prescription</button>
