@@ -155,8 +155,8 @@ const SubmitEP = () => {
                 patient_name: statePatient.patient.name,
                 patient_phone: statePatient.patient.phone,
                 patient_sex: statePatient.patient.sex,
-                age_years: statePatient.patient.year,
-                age_months: statePatient.patient.month,
+                age_years: statePatient.patient.year || null,
+                age_months: statePatient.patient.month || null,
                 blood_group: statePatient.patient.blood_group,
                 current_address: statePatient.patient.address,
 
