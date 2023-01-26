@@ -42,7 +42,7 @@ const InputMedicine = () => {
         //Fetch from Api
         const funFetch = async () => {
             try {
-                const response = await fetch(`${apiV1}/medicines/?search_medicine=${medicine}&skip=0&limit=10`)
+                const response = await fetch(`${apiV1}/medicines/?search_medicine=${medicine}&skip=0&limit=100`)
                 if (response.ok) {
                     const data = await response.json()
                     setArr(data)
@@ -82,7 +82,6 @@ const InputMedicine = () => {
         }
         setDoses(dosesString)
     }, [medicineObj, medicine, apiV1, morning, evening, night])
-    console.log(pharma)
 
     const submit = (e) => {
         e.preventDefault()
