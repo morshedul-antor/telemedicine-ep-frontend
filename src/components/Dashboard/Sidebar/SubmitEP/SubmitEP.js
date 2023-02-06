@@ -139,51 +139,56 @@ const SubmitEP = () => {
 
     const submit = async (e) => {
         e.preventDefault()
-        const epSubmitByFetch = await fetch(`${apiV1}/ep`, {
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            dataType: 'json',
-            origin: '*',
-            method: 'POST',
-            body: JSON.stringify({
-                cause_of_consultation: stateConsultation.consultation,
-                doctor_id: stateUser.info.id,
 
-                patient_id: statePatient.patient.id,
-                patient_name: statePatient.patient.name,
-                patient_phone: statePatient.patient.phone,
-                patient_sex: statePatient.patient.sex,
-                age_years: statePatient.patient.year || null,
-                age_months: statePatient.patient.month || null,
-                blood_group: statePatient.patient.blood_group,
-                current_address: statePatient.patient.address,
+        if (statePatient.patient?.name?.length !== 0) {
+            const epSubmitByFetch = await fetch(`${apiV1}/ep`, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                dataType: 'json',
+                origin: '*',
+                method: 'POST',
+                body: JSON.stringify({
+                    cause_of_consultation: stateConsultation.consultation,
+                    doctor_id: stateUser.info.id,
 
-                chief_complaints: [...ccList],
-                histories: [...history],
-                co_morbidities: comorbidity,
-                on_examinations: onexaminations,
-                investigations: [...investigations],
-                diagnosis: [
-                    {
-                        diagnosis_type: 'probable',
-                        diagnosis: stateDiagnosis.probable,
-                    },
-                    {
-                        diagnosis_type: 'confirmatory',
-                        diagnosis: stateDiagnosis.confirmatory,
-                    },
-                ],
-                medicines: [...all_medicines],
-                advices: [...adviceList],
-                refer: { detail: referDetail.detail },
-                followup: nextFollowUp,
-            }),
-        })
-        if (epSubmitByFetch.ok) {
-            const data = await epSubmitByFetch.json()
-            await setEpCreated({ status: true, data: data })
+                    patient_id: statePatient.patient.id,
+                    patient_name: statePatient.patient.name,
+                    patient_phone: statePatient.patient.phone,
+                    patient_sex: statePatient.patient.sex,
+                    age_years: statePatient.patient.year || null,
+                    age_months: statePatient.patient.month || null,
+                    blood_group: statePatient.patient.blood_group,
+                    current_address: statePatient.patient.address,
+
+                    chief_complaints: [...ccList],
+                    histories: [...history],
+                    co_morbidities: comorbidity,
+                    on_examinations: onexaminations,
+                    investigations: [...investigations],
+                    diagnosis: [
+                        {
+                            diagnosis_type: 'probable',
+                            diagnosis: stateDiagnosis.probable,
+                        },
+                        {
+                            diagnosis_type: 'confirmatory',
+                            diagnosis: stateDiagnosis.confirmatory,
+                        },
+                    ],
+                    medicines: [...all_medicines],
+                    advices: [...adviceList],
+                    refer: { detail: referDetail.detail },
+                    followup: nextFollowUp,
+                }),
+            })
+            if (epSubmitByFetch.ok) {
+                const data = await epSubmitByFetch.json()
+                setEpCreated({ status: true, data: data })
+            }
+        } else {
+            alert('Please input a patient first!')
         }
     }
     if (epCreated.status === true) {
