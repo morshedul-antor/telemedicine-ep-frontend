@@ -32,3 +32,16 @@
 .btnGroup > button:hover {
     color: var(--secondary);
 }
+
+.warning {
+    text-align: center;
+    color: var(--red);
+    font-size: 10px;
+    margin-top: -10px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.warning > span {
+    font-weight: 600;
+}

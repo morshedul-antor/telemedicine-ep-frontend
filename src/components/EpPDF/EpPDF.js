@@ -15,8 +15,6 @@ const EpPDF = () => {
     const { stateUser } = useContext(UserInfo)
     const userDetail = stateUser.info
 
-    console.log('s', userDetail)
-
     const title = 'E-Prescription'
     useEffect(() => {
         document.title = title
@@ -26,11 +24,19 @@ const EpPDF = () => {
 
     return (
         <div className={classes.EpPDF}>
+            {userDetail.role_name === 'doctor' ? (
+                <div className={classes.warning}>
+                    Please remember to Update Prescription Header to include your name, and other details <br />
+                    <span> You will ONLY have to do this ONCE</span>
+                </div>
+            ) : (
+                ''
+            )}
             <GeneratePDF ref={componentRef} />
             <div className={classes.btnGroup}>
                 <Link to="/">Back</Link>
                 {userDetail.role_name === 'doctor' ? (
-                    <button onClick={() => setHeader(!header)}>Update prescription header</button>
+                    <button onClick={() => setHeader(!header)}>Update Prescription Header</button>
                 ) : (
                     ''
                 )}
