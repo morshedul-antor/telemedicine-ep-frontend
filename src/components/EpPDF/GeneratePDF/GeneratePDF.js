@@ -23,6 +23,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
             .catch((e) => {})
     }, [apiV1, hxepid, stateAuth])
 
+    console.log('ep', ep)
+
     let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
     let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
     let familyHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'family')
@@ -33,7 +35,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>
-                {/* Top field */}
+                {/* Top Field */}
                 <Header stateAuth={stateAuth} classes={classes} doc_id={ep?.doctor_id} />
 
                 {/* Patient */}
@@ -57,9 +59,9 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     </p>
                 </div>
 
-                {/* Middle body */}
+                {/* Middle Body */}
                 <div className={classes.middleBody}>
-                    {/* Left part */}
+                    {/* Left Part */}
                     <div className={classes.leftBody}>
                         {/* Chief Complaints */}
                         {ep?.chief_complaints?.length !== 0 ? (
@@ -73,7 +75,22 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* history  */}
+                        {/* Co-Morbidity */}
+                        {ep.co_morbidities && ep.co_morbidities.length !== 0 ? (
+                            <>
+                                <h4>Co-Morbidity :</h4>
+                                <ul>
+                                    {ep.co_morbidities &&
+                                        ep.co_morbidities.map((v, i) => (
+                                            <li key={i}>
+                                                {v.cm_type} <span> {v.remarks}</span>
+                                            </li>
+                                        ))}
+                                </ul>
+                            </>
+                        ) : null}
+
+                        {/* History  */}
                         {ep.histories && ep.histories.length !== 0 ? (
                             <Fragment>
                                 <h4>History :</h4>
@@ -86,7 +103,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* on exam  */}
+                        {/* On Exam  */}
                         <OnExam />
 
                         {/* Investigation */}
@@ -99,8 +116,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 </ol>
                             </>
                         ) : null}
-                        {/* Diagnosis */}
 
+                        {/* Diagnosis */}
                         {ep?.diagnosis?.length !== 0 ? (
                             <Fragment>
                                 {ep.diagnosis && ep.diagnosis[0].diagnosis.length !== 0 ? <h4>D/D :</h4> : null}
@@ -132,7 +149,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
                     </div>
-                    {/* Right part */}
+
+                    {/* Right Part */}
                     <div className={classes.rightBody}>
                         {ep?.medicines?.length !== 0 ? (
                             <Fragment>
@@ -166,7 +184,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* follow up  */}
+                        {/* Follow Up  */}
                         {ep?.followup?.length !== 0 ? (
                             <Fragment>
                                 <h4>Next followup :</h4>
@@ -174,7 +192,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* refer  */}
+                        {/* Refer  */}
                         {ep?.refer?.length !== 0 ? (
                             <Fragment>
                                 <h4>Reffer :</h4>

@@ -31,7 +31,6 @@
     color: var(--dark-blue);
     font-weight: 300;
 }
-
 .OnExamUl {
     list-style-type: none;
     margin: 0;
@@ -69,7 +68,6 @@
     border: 1px solid var(--primary);
     background-color: var(--primary);
 }
-
 .topRight {
     text-align: right;
 }
@@ -93,7 +91,6 @@
     right: 0;
     width: 120px;
 } */
-
 .patient {
     padding: 0 0;
     margin: 0 50px;
@@ -115,7 +112,6 @@
     position: absolute;
     right: 0;
 }
-
 .middleBody {
     display: grid;
     grid-template-columns: minmax(0, 40%) minmax(0, 60%);
@@ -138,12 +134,18 @@
     font-size: 12px;
     margin: 3px 10px;
 }
-.leftBody ol {
+.leftBody ol,
+.leftBody ul {
     padding-left: 20px;
     margin-top: 5px;
 }
-.leftBody ol li {
+.leftBody ol li,
+.leftBody ul li {
     font-size: 12px;
+}
+.leftBody ul li span {
+    font-size: 10px;
+    font-weight: 400;
 }
 .leftBody .coMorbidity {
     background: var(--light-grey);
@@ -157,7 +159,6 @@
     /* padding: 5px 20px; */
     margin-right: 10px;
 }
-
 .leftBody .diagnosis li {
     font-size: 12px;
     padding-left: 10px;
@@ -168,7 +169,6 @@
 .leftBody .diagnosis ol > li:last-child {
     padding-bottom: 10px;
 }
-
 .rightBody {
     padding-left: 30px;
 }
@@ -185,7 +185,6 @@
 .rightBody ol li {
     font-size: 12px;
 }
-
 .singleMedicine p {
     font-size: 12px;
     margin: 5px;
@@ -212,7 +211,6 @@
     background: var(--dark-blue);
     border-radius: 2px;
 }
-
 .refer {
     font-size: 14px;
     font-weight: 500;
@@ -226,7 +224,6 @@
 .refer > span {
     color: var(--primary);
 }
-
 .follow {
     font-size: 12px;
     margin: 0;
@@ -246,7 +243,6 @@
     text-align: left;
     margin: 0;
 }
-
 .footer {
     color: var(--white);
     background: var(--primary);

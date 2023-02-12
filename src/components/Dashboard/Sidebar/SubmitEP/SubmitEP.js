@@ -99,7 +99,7 @@ const SubmitEP = () => {
     // co morbidity
     let comorbidity = []
     if (stateCoMorbidity.coMorbidity.length !== 0) {
-        stateCoMorbidity.coMorbidity.map((v, i) => ({ cm_type: v.name, remarks: v.remark }))
+        comorbidity = [...stateCoMorbidity.coMorbidity.map((v) => ({ cm_type: v.title, remarks: v.remark }))]
     }
 
     // onexamination
@@ -164,7 +164,7 @@ const SubmitEP = () => {
 
                     chief_complaints: [...ccList],
                     histories: [...history],
-                    co_morbidities: comorbidity,
+                    co_morbidities: [...comorbidity],
                     on_examinations: onexaminations,
                     investigations: [...investigations],
                     diagnosis: [
