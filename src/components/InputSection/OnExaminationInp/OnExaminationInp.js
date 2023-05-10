@@ -1,5 +1,4 @@
 import { Fragment, useState, useReducer } from 'react'
-// import { OnExamination } from '../../../allContext'
 import { onExaminationReducer, onExaminationState } from '../../../reducer/onExaminationReducer'
 import Anaemia from './ExamField/Anaemia'
 import BloodPressure from './ExamField/BloodPressure'
@@ -23,7 +22,7 @@ const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
     // const { dispatchOnExamination } = useContext(OnExamination)
 
-    const [stateOnEaminations, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
+    const [, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
 
     let oe = {}
 

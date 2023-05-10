@@ -10,7 +10,7 @@ import OnExam from './OnExam'
 export const GeneratePDF = React.forwardRef((props, ref) => {
     const { liveid } = useParams()
     const [ep, setEp] = useState({})
-    const [profile, setProfile] = useState('')
+    const [profile] = useState('')
 
     const { stateAuth } = useContext(Auth)
     const apiV1 = process.env.REACT_APP_API_V1

@@ -33,7 +33,7 @@ import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
 
 const Body = () => {
-    const [statePatientInfo, dispatchPatientInfo] = useReducer(patientReducer, patientState)
+    const [, dispatchPatientInfo] = useReducer(patientReducer, patientState)
 
     const [stateConsultation, dispatchConsultation] = useReducer(consultationReducer, consultationState)
     const [stateChief, dispatchChief] = useReducer(chiefReducer, chiefState)
@@ -57,8 +57,8 @@ const Body = () => {
     const [stateOnExamination, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
     const [stateRefer, dispatchRefer] = useReducer(referReducer, referState)
 
-    const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
-    const [stateMedicine, dispatchMedicine] = useReducer(medicineReducer, medicineState)
+    const [, dispatchField] = useReducer(fieldReducer, fieldState)
+    const [, dispatchMedicine] = useReducer(medicineReducer, medicineState)
 
     const history = {
         statePersonalHistory,
@@ -77,7 +77,7 @@ const Body = () => {
         dispatchCoMorbidity,
     }
 
-    const [swap, setSwap] = useState(false)
+    const [swap] = useState(false)
 
     const allClear = () => {
         dispatchPatientInfo({ type: 'remove' })
@@ -108,9 +108,6 @@ const Body = () => {
 
     return (
         <div className={classes.Body}>
-            {/* <button onClick={(e) => setSwap(!swap)}>
-                <FontAwesomeIcon icon={faArrowsAltV} />
-            </button> */}
             <div className={classes.Wrapper}>
                 <CauseOfConsultation.Provider value={{ stateConsultation, dispatchConsultation }}>
                     <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>

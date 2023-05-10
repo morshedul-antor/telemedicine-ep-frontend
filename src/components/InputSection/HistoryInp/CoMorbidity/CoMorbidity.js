@@ -3,7 +3,7 @@ import { coMorbidityReducer, coMorbidityState } from '../../../../reducer/coMorb
 import classes from './CoMorbidity.module.css'
 
 const CoMorbidity = () => {
-    const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
+    const [, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
 
     const [htn, setHtn] = useState({ check: false, title: '', remark: '' })
     const [dm, setDm] = useState({ check: false, title: '', remark: '' })

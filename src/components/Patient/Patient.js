@@ -38,7 +38,7 @@ const Patient = ({ cross }) => {
                 setAddress(statePatient.patient.address)
                 setGroup(statePatient.patient.blood_group)
                 if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
-                    const [y, m, d] = dob(statePatient.patient.dob)
+                    const [y, m] = dob(statePatient.patient.dob)
                     setYear(y)
                     setMonth(m)
                 }
