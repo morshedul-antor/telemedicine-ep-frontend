@@ -16,13 +16,13 @@ const InputSection = () => {
     const { state } = useContext(FieldContext)
     return (
         <div className={classes.InputSection}>
-            <h3>Input</h3>
+            {/* <h3>Input</h3> */}
+            {state.field === 'medicine' ? <MedicineInpOut /> : null}
             {state.field === 'chief' ? <ChiefComplaintsInp /> : null}
             {state.field === 'diagnosis' ? <DiagnosisInp /> : null}
             {state.field === 'history' ? <HistoryInp /> : null}
             {state.field === 'investigation' ? <InvestigationInp /> : null}
             {state.field === 'onexam' ? <OnExaminationInp /> : null}
-            {state.field === 'medicine' ? <MedicineInpOut /> : null}
             {state.field === 'advice' ? <AdviceInpOut /> : null}
             {state.field === 'next' ? <NextFollowUpInpOut /> : null}
             {state.field === 'refer' ? <ReferInp /> : null}

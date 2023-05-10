@@ -43,7 +43,7 @@ const Nav = () => {
                                 <div>
                                     <FontAwesomeIcon icon={faUserCircle} />
                                     <p>
-                                        {statePatient.patient.name} ({statePatient.patient.sex})
+                                        {statePatient.patient.name} [{statePatient.patient.sex}]
                                         <span>{statePatient.patient.phone}</span>
                                     </p>
                                     <p>
@@ -77,7 +77,7 @@ const Nav = () => {
                     </div>
                 </div>
                 <div className={classes.cause}>
-                    Cause of Consultation: <span> {stateConsultation.consultation}</span>
+                    Chief Complaints: <span> {stateConsultation.consultation}</span>
                 </div>
 
                 {modal ? <Patient cross={setModal} /> : null}

@@ -104,15 +104,15 @@ const Body = () => {
         dispatchOnExamination({ type: 'remove' })
 
         dispatchConsultation({ type: 'remove' })
-        dispatchField({ type: 'chief' })
+        dispatchField({ type: 'medicine' })
         window.location.reload()
     }
 
     return (
         <div className={classes.Body}>
-            <button onClick={(e) => setSwap(!swap)}>
+            {/* <button onClick={(e) => setSwap(!swap)}>
                 <FontAwesomeIcon icon={faArrowsAltV} />
-            </button>
+            </button> */}
             <div className={classes.Wrapper}>
                 <CauseOfConsultation.Provider value={{ stateConsultation, dispatchConsultation }}>
                     <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>

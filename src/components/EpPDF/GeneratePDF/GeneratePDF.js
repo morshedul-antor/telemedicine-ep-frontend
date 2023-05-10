@@ -8,7 +8,7 @@ import HistoryChildView from './HistoryChildView'
 import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
-    const { hxepid } = useParams()
+    const { liveid } = useParams()
     const [ep, setEp] = useState({})
     const [profile, setProfile] = useState('')
 
@@ -16,14 +16,12 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
     const apiV1 = process.env.REACT_APP_API_V1
 
     useEffect(() => {
-        let id = hxepid.slice(4) - 100000
+        let id = liveid.slice(4) - 100000
         let endpoint = `${apiV1}/ep/${id}`
         getFromAPI(endpoint)
             .then((data) => setEp(data))
             .catch((e) => {})
-    }, [apiV1, hxepid, stateAuth])
-
-    console.log('ep', ep)
+    }, [apiV1, liveid, stateAuth])
 
     let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
     let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
@@ -45,10 +43,10 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     </p>
                     <p>
                         <b>Age: </b>
-                        {` ${ep.age_years || ''} year's, ${ep.age_months || ''} month's`}
+                        {` ${ep.age_years || ''}.${ep.age_months || ''}`}
                     </p>
                     <p>
-                        <b>Sex:</b> <span>{ep.patient_sex || ''}</span>
+                        <b>Gender:</b> <span>{ep.patient_sex || ''}</span>
                     </p>
                     <p>
                         <b>Blood Group:</b> {ep.blood_group || ''}
@@ -214,12 +212,6 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             })}
                         </div>
                     </div>
-                </div>
-
-                <div className={classes.footer}>
-                    <p>
-                        This e-prescription developed by <b>HEALTHx</b>
-                    </p>
                 </div>
             </div>
         </div>

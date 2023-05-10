@@ -14,7 +14,7 @@ const AuthCheck = () => {
 
     useEffect(() => {
         let redirectFunc = async () => {
-            await localStorage.setItem('auth', JSON.stringify({ token }))
+            localStorage.setItem('auth', JSON.stringify({ token }))
 
             let authFetch = await fetch(`${apiV1}/doctors/auth`, {
                 headers: {
@@ -30,7 +30,7 @@ const AuthCheck = () => {
             if (authFetch.ok) {
                 dispatchAuth({ type: 'token', payload: token })
                 dispatchUser({ type: 'set', payload: authJson })
-                await history.push('/')
+                history.push('/')
             }
         }
         redirectFunc()

@@ -21,16 +21,15 @@
 .SubmitEP > button:hover {
     transform: scale(1.05);
 }
-.SubmitEP > button :nth-child(2):hover{
+.SubmitEP > button :nth-child(2):hover {
     background: var(--green);
 }
 
-.SubmitEP > .viewBtn{
-    background: var(--green);
+.SubmitEP > .viewBtn {
+    background: var(--secondary);
 }
-.SubmitEP > .viewBtn > a{
+.SubmitEP > .viewBtn > a {
     color: var(--white);
     text-decoration: none;
     text-align: center;
 }
-

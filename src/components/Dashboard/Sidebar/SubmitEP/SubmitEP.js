@@ -200,7 +200,7 @@ const SubmitEP = () => {
             <button onClick={(e) => submit(e)}>Create Prescription</button>
             {epCreated.status === true ? (
                 <button className={classes.viewBtn}>
-                    <a href={`/ep/hxep${epCreated.data.id + 100000}`}>View Prescription</a>
+                    <a href={`/prescription/live${epCreated.data.id + 100000}`}>View Prescription</a>
                 </button>
             ) : null}
         </div>

@@ -1,7 +1,7 @@
 .EpPDF {
     position: relative;
     padding: 60px 0;
-    background: var(--light-grey);
+    background: var(--light);
 }
 .EpPDF .btnGroup {
     position: fixed;

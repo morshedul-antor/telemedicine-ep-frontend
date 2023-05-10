@@ -34,8 +34,11 @@
 }
 .Wrapper {
     display: grid;
-    grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+    grid-template-columns: minmax(0, 60%);
     height: 100vh;
+}
+.Wrapper > div:first-child {
+    display: none;
 }
 .Wrapper > div {
     overflow-y: auto;

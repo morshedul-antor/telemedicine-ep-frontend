@@ -116,7 +116,7 @@ const Patient = ({ cross }) => {
                         type="text"
                         value={stateConsultation.consultation}
                         onChange={(e) => dispatchConsultation({ type: 'input', payload: e.target.value })}
-                        placeholder="Cause of consultation*"
+                        placeholder="Chief Complaints*"
                         required
                     />
 

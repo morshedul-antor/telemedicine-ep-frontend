@@ -20,7 +20,7 @@ const App = () => {
                     <Router>
                         <Switch>
                             <ProtectedRoute exact={true} path="/" component={EprescriptionPage} />
-                            <Route path="/ep/:hxepid" component={EPrescriptionPDF} />
+                            <Route path="/prescription/:liveid" component={EPrescriptionPDF} />
                             <Route path="/auth/:token">
                                 <AuthCheck />
                             </Route>
