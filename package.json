@@ -1,5 +1,5 @@
 {
-    "name": "eprescription-frontend",
+    "name": "telemedicine-ep-frontend",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
