@@ -1,4 +1,4 @@
-import { Fragment, useState, useContext, useReducer } from 'react'
+import { Fragment, useState, useReducer } from 'react'
 // import { OnExamination } from '../../../allContext'
 import { onExaminationReducer, onExaminationState } from '../../../reducer/onExaminationReducer'
 import Anaemia from './ExamField/Anaemia'

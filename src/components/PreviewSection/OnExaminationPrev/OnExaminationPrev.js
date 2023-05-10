@@ -1,6 +1,5 @@
 import { useState, Fragment, useContext } from 'react'
 import { OnExamination } from '../../../allContext'
-import { undef } from '../../../utils/TypeCheck'
 import Anaemia from './OnExaminationChild/Anaemia'
 import BloodPressure from './OnExaminationChild/BloodPressure'
 import Bmi from './OnExaminationChild/Bmi'

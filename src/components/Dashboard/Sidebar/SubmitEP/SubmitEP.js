@@ -9,7 +9,7 @@ import { drugHistoryState, drugHistoryReducer } from '../../../../reducer/drugHi
 import { familyHistoryState, familyHistoryReducer } from '../../../../reducer/familyHistoryReducer'
 import { investigationState, investigationReducer } from '../../../../reducer/investigationReducer'
 import { medicalHistoryState, medicalHistoryReducer } from '../../../../reducer/medicalHistoryReducer'
-import { medicineState, medicineReducer } from '../../../../reducer/medicineReducer'
+import { medicineState } from '../../../../reducer/medicineReducer'
 import { nextState, nextReducer } from '../../../../reducer/nextReducer'
 import { onExaminationReducer, onExaminationState } from '../../../../reducer/onExaminationReducer'
 import { personalHistoryState, personalHistoryReducer } from '../../../../reducer/personalHistoryReducer'

@@ -1,4 +1,4 @@
-import { useState, useReducer, useContext, useEffect } from 'react'
+import { useState, useReducer, useContext } from 'react'
 import { Auth } from '../../allContext'
 import { userReducer, userState } from '../../reducer/userReducer'
 import classes from './HeaderUpdate.module.css'

@@ -6,7 +6,6 @@ import { SidebarContext, PatientInfo } from '../../allContext'
 import epLogo from '../../assets/img/logo.png'
 import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
 import { consultationReducer, consultationState } from '../../reducer/causeOfConsultation'
-import { dob } from '../../utils/DateOfBirth'
 import Patient from '../Patient/Patient'
 import classes from './Nav.module.css'
 

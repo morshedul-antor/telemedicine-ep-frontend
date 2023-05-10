@@ -1,5 +1,4 @@
-import { useState, useContext, useReducer } from 'react'
-import { History } from '../../../../allContext'
+import { useState, useReducer } from 'react'
 import { coMorbidityReducer, coMorbidityState } from '../../../../reducer/coMorbidityReducer'
 import classes from './CoMorbidity.module.css'
 

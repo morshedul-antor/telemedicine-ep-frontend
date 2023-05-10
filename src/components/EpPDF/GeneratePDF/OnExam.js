@@ -1,6 +1,5 @@
 import { useContext, Fragment } from 'react'
 import { PdfWrapped } from '../../../allContext'
-import { undef } from '../../../utils/TypeCheck'
 import Anaemia from '../../PreviewSection/OnExaminationPrev/OnExaminationChild/Anaemia'
 import BloodPressure from '../../PreviewSection/OnExaminationPrev/OnExaminationChild/BloodPressure'
 import Bmi from '../../PreviewSection/OnExaminationPrev/OnExaminationChild/Bmi'
