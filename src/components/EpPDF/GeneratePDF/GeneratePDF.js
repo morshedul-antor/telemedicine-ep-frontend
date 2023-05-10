@@ -62,13 +62,11 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     {/* Left Part */}
                     <div className={classes.leftBody}>
                         {/* Chief Complaints */}
-                        {ep?.chief_complaints?.length !== 0 ? (
+                        {ep?.cause_of_consultation?.length !== 0 ? (
                             <Fragment>
-                                <h4>C/C :</h4>
+                                <h4>Chief Complaints:</h4>
                                 <ol>
-                                    {ep?.chief_complaints?.map((v, i) => (
-                                        <li key={i}>{v.chief_complaints}</li>
-                                    ))}
+                                    <li>{ep?.cause_of_consultation}</li>
                                 </ol>
                             </Fragment>
                         ) : null}
