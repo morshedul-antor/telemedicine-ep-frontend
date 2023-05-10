@@ -1,11 +1,15 @@
+import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classes from './Landing.module.css'
 
 const Landing = () => {
     return (
         <div className={classes.Landing}>
             <div className={classes.Wrap}>
-                <h1>E-Prescription</h1>
-                <h2>- HEALTHx</h2>
+                <h1>
+                    <FontAwesomeIcon icon={faStethoscope} />
+                    LiveDoc
+                </h1>
             </div>
         </div>
     )

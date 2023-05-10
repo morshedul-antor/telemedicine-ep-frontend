@@ -1,26 +1,25 @@
-.Landing{
+.Landing {
     width: 100vw;
-    height: 100vh;
-    background: var(--primary);
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.Wrap{
+.Wrap {
     display: inline-block;
-    background: var(--secondary);
     border-radius: 5px;
     padding: 30px 80px;
 }
-.Wrap > h2, .Wrap > h1{
-    color: var(--white);
-    font-weight: 500;
+.Wrap > h2,
+.Wrap > h1 {
+    color: var(--primary);
+    font-weight: 600;
 }
-.Wrap > h1{
+.Wrap > h1 {
     font-size: 60px;
     margin: 0;
 }
-.Wrap > h2{
+.Wrap > h2 {
     margin: 10px;
     font-size: 30px;
 }
